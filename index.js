@@ -6,7 +6,14 @@ const app = express();
 const authRoutes = require("./routes/authRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const appointmentRoutes = require("./routes/appointmentRoutes");
-const adminServicesRoutes = require('./routes/adminServicesRoutes')
+const adminRoutes = require('./routes/adminRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
+const forgotPasswordRoutes = require('./routes/forgotPasswordRoutes');
+const notificationsRoutes = require('./routes/notificationsRoutes');
+const searchRoutes = require('./routes/searchRoutes');
+const analyticsRoutes = require('./routes/analyticsRoutes');
+
 
 //connect db
 mongoose
@@ -22,7 +29,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api", authRoutes);
 app.use("/api", profileRoutes);
 app.use("/api", appointmentRoutes);
-app.use("/api",adminServicesRoutes)
+app.use('/api', reviewRoutes);
+app.use('/api', dashboardRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api', forgotPasswordRoutes);
+app.use('/api', notificationsRoutes);
+app.use('/api', searchRoutes);
+app.use('/api', analyticsRoutes);
 
 //start server
 app.listen(process.env.PORT, () => console.log("server started successfully"));
